@@ -1,11 +1,25 @@
 <!--Copyright (c) 2016 Payam Siyari-->
 <!DOCTYPE html>
 <html>
-<title>Home</title>
 <head>
+<meta name="color-scheme" content="light dark">
+<title>Home</title>
 <style>
 html { 
-  background: url(https://picsum.photos/3200/1600) no-repeat center center fixed; 
+  --bg-light: #fff;
+  --bg-dark: #000;
+  --bg: var(--bg-light);
+
+  @media (prefers-color-scheme: dark) {
+    --bg: var(--bg-dark);
+  }
+
+  @supports (color: light-dark(white, black)) {
+    --bg: light-dark(var(--bg-light), var(--bg-dark));
+  }
+
+  color-scheme: light dark;
+  background: var(--bg) url(https://picsum.photos/3200/1600) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
