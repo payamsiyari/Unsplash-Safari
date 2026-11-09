@@ -5,7 +5,7 @@
 <meta name="color-scheme" content="light dark">
 <title>Home</title>
 <style>
-html { 
+html {
   --bg-light: #fff;
   --bg-dark: #000;
   --bg: var(--bg-light);
@@ -19,14 +19,33 @@ html {
   }
 
   color-scheme: light dark;
-  background: var(--bg) url(https://picsum.photos/3200/1600) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: var(--bg);
+}
+
+body {
+  margin: 0;
+}
+
+.wallpaper {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.15s;
+  }
+}
+
+.wallpaper.loaded {
+  opacity: 1;
 }
 </style>
 </head>
 <body>
+<img class="wallpaper" src="https://picsum.photos/3200/1600" alt="" onload="this.classList.add('loaded')">
 </body>
 </html>
